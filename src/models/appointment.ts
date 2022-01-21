@@ -1,7 +1,7 @@
 import { uuid } from 'uuidv4';
 
 class Appointment {
-  id:string;
+  id: string;
 
   provider: string;
 
