@@ -12,9 +12,8 @@ import User from './User';
 
 @Entity('appointments')
 class Appointment {
-  @PrimaryGeneratedColumn('uuid');
-
-id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   provider_id: string;
