@@ -1,6 +1,6 @@
+import { EntityRepository, Repository } from 'typeorm';
 
 import Appointment from '../models/Appointment';
-import { EntityRepository, Repository } from 'typeorm'
 
 @EntityRepository(Appointment)
 class AppointmentsRepository extends Repository<Appointment> {
@@ -8,8 +8,6 @@ class AppointmentsRepository extends Repository<Appointment> {
     const findAppointment = await this.findOne({
       where: { date },
     });
-    /* const findAppointment = this.appointments
-      .find((appointment) => isEqual(date, appointment.date)); */
 
     return findAppointment || null;
   }
