@@ -26,8 +26,7 @@ usersRouter.post('/', async (request, response) => {
   return response.json(user);
 });
 
-usersRouter.patch(
-  '/avatar',
+usersRouter.patch('/avatar',
   ensureAuthenticated,
   upload.single('avatar'),
   async (request, response) => {
