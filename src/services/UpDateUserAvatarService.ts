@@ -1,4 +1,4 @@
-import { getRepository } from 'typeorm';
+ import { getRepository } from 'typeorm';
 import User from '../models/User';
 import path from 'path';
 import uploadConfig from '../config/upload';
