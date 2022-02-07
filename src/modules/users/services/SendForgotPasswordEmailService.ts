@@ -3,6 +3,7 @@ import AppError from '@shared/errors/AppError';
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IUsersTokensRepository from '../repositories/IUsersTokensRepository';
+import path from 'path';
 
 //import User from '../infra/typeorm/entities/User';
 
@@ -31,9 +32,9 @@ class SendForgotPasswordEmailService {
       throw new AppError('Users do not exists');
     }
 
-
-
      const { token } = await this.usersTokensRepository.generate(user.id);
+
+     const forgotPasswordTemplate = path.resolve(__dirname, '..', 'views' , 'forgot_password.hbs');
 
     await this.mailProvider.sendMail({
       to: {
@@ -42,10 +43,10 @@ class SendForgotPasswordEmailService {
       },
       subject: '[GoBarber] Recuperação de senha',
       templateData: {
-        template: 'Olá, {{name}} este é o seu código de recuperação de senha: {{token}} ',
+        file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          token,
+          link: `http://localhost:3000/reset_password?token=${token}`,
         }
       }
     });
