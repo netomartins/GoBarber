@@ -1,11 +1,11 @@
 import {
   ObjectID,
-   Entity,
-    Column,
-     CreateDateColumn,
-      UpdateDateColumn,
-       ObjectIdColumn,
-       } from 'typeorm';
+  Entity,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ObjectIdColumn,
+} from 'typeorm';
 
 @Entity('notifications')
 class Notification {
@@ -17,7 +17,7 @@ class Notification {
   content: string;
 
   @Column('uuid')
-  recipient: string;
+  recipient_id: string;
 
   @Column({ default: false })
   read: boolean;
