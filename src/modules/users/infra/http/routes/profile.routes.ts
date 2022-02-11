@@ -1,5 +1,5 @@
 import { Router } from 'express';
-//import { celebrate, Segments, Joi } from 'celebrate';
+import { celebrate, Segments, Joi } from 'celebrate';
 
 import ProfileController from '../Controllers/ProfileController';
 
@@ -13,7 +13,7 @@ profileRouter.use(ensureAuthenticated);
 profileRouter.get('/', profileController.show);
 profileRouter.put(
   '/',
-  /* celebrate({
+   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
@@ -23,7 +23,7 @@ profileRouter.put(
     },
   }
   ),
-   */
+
   profileController.update,
 
 );
