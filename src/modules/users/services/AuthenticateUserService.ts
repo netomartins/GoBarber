@@ -5,7 +5,7 @@ import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import User from '../infra/typeorm/entities/User';
 import IUserRepository from '../repositories/IUsersRepository'
-import { inject, injectable} from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 
 interface Request {
   email: string;
@@ -19,9 +19,9 @@ interface Response {
 
 @injectable()
 class AuthenticateUserService {
-  constructor (
+  constructor(
     @inject('UsersRepository')
-    private usersRepository: IUserRepository) {}
+    private usersRepository: IUserRepository) { }
 
   public async execute({ email, password }: Request): Promise<Response> {
 
@@ -35,7 +35,7 @@ class AuthenticateUserService {
     const passwordMatched = await compare(password, user.password);
 
     if (!passwordMatched) {
-      throw new AppError('Incorrect email/Password combination.',401);
+      throw new AppError('Incorrect email/Password combination.', 401);
     }
 
     const { secret, expiresIn } = authConfig.jwt;
