@@ -108,3 +108,5 @@ tmp/*
 o
 tmp/*
 !tmp/.gitkeep
+###
+ormconfig.json

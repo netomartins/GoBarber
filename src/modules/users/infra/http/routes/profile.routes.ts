@@ -10,10 +10,9 @@ const profileController = new ProfileController();
 
 profileRouter.use(ensureAuthenticated);
 
-profileRouter.get('/', profileController.show);
 profileRouter.put(
   '/',
-   celebrate({
+  celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
@@ -21,11 +20,10 @@ profileRouter.put(
       password: Joi.string(),
       password_confirmation: Joi.string().valid(Joi.ref('password')),
     },
-  }
-  ),
-
+  }),
   profileController.update,
-
 );
+
+profileRouter.get('/', profileController.show);
 
 export default profileRouter;

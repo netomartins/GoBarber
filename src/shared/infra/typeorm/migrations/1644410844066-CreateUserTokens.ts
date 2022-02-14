@@ -1,4 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { Query } from 'typeorm/driver/Query';
 
 export default class CreateUserTokens1644410844066
   implements MigrationInterface {
@@ -17,6 +18,7 @@ export default class CreateUserTokens1644410844066
           {
             name: 'token',
             type: 'uuid',
+            isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
